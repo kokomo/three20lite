@@ -925,7 +925,7 @@
 					EXTJSON_SBJSON,
 					DEBUG,
 				);
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 			};
@@ -957,7 +957,7 @@
 					EXTJSON_SBJSON,
 					DEBUG,
 				);
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -969,7 +969,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PREPROCESSOR_DEFINITIONS = EXTJSON_SBJSON;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = "";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
