@@ -17,6 +17,7 @@
 #import "Three20UI/TTTableLinkedItemCell.h"
 
 // UI
+#import "Three20UI/TTImageView.h"
 #import "Three20UI/TTNavigator.h"
 #import "Three20UI/TTTableLinkedItem.h"
 
@@ -73,8 +74,22 @@
 
       } else if (navigationMode == TTNavigationModeCreate ||
                  navigationMode == TTNavigationModeShare) {
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
+        NSLocale* locale = TTCurrentLocale();
+        if ([locale.localeIdentifier isEqualToString:@"he"]) {
+          [_moreView removeFromSuperview];
+        TT_RELEASE_SAFELY(_moreView);
+          _moreView = [[TTImageView alloc] init];
+          UITableView* tableView = (UITableView*)self.superview;
+          if (tableView.style == UITableViewStylePlain) {
+            _moreView.frame = CGRectMake(10, 16, 9, 13);
+          } else {
+            _moreView.frame = CGRectMake(10, 16, 9, 13);          
+          }
+          _moreView.urlPath = @"bundle://more.png";
+          [self.contentView addSubview:_moreView]; 
+        } else {
+          self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
       } else {
         self.accessoryType = UITableViewCellAccessoryNone;
       }
@@ -82,7 +97,22 @@
       self.selectionStyle = TTSTYLEVAR(tableSelectionStyle);
 
     } else if (nil != item.delegate && nil != item.selector) {
-      self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+      NSLocale* locale = TTCurrentLocale();
+      if ([locale.localeIdentifier isEqualToString:@"he"]) {
+        [_moreView removeFromSuperview];
+    TT_RELEASE_SAFELY(_moreView);
+        _moreView = [[TTImageView alloc] init];
+        UITableView* tableView = (UITableView*)self.superview;
+        if (tableView.style == UITableViewStylePlain) {
+          _moreView.frame = CGRectMake(10, 16, 9, 13);
+        } else {
+          _moreView.frame = CGRectMake(10, 16, 9, 13);          
+        }
+        _moreView.urlPath = @"bundle://more.png";
+        [self.contentView addSubview:_moreView];  
+    } else {
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+      }
       self.selectionStyle = TTSTYLEVAR(tableSelectionStyle);
 
     } else {

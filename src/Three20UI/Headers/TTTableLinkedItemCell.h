@@ -18,9 +18,11 @@
 #import "Three20UI/TTTableViewCell.h"
 
 @class TTTableLinkedItem;
+@class TTImageView;
 
 @interface TTTableLinkedItemCell : TTTableViewCell {
   TTTableLinkedItem* _item;
+  TTImageView* _moreView;
 }
 
 @end
