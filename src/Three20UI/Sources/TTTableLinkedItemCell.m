@@ -72,8 +72,7 @@
       if (item.accessoryURL) {
         self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 
-      } else if (navigationMode == TTNavigationModeCreate ||
-                 navigationMode == TTNavigationModeShare) {
+      } else {
         NSLocale* locale = TTCurrentLocale();
         if ([locale.localeIdentifier isEqualToString:@"he"]) {
           [_moreView removeFromSuperview];
@@ -90,9 +89,7 @@
         } else {
           self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-      } else {
-        self.accessoryType = UITableViewCellAccessoryNone;
-      }
+      } 
 
       self.selectionStyle = TTSTYLEVAR(tableSelectionStyle);
 
