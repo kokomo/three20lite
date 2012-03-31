@@ -17,7 +17,6 @@
 // UI Controllers
 #import "TTBaseViewController.h"
 #import "TTGlobalUICommon.h"
-#import "TTNavigator.h"
 #import "TTViewController.h"
 #import "TTNavigationController.h"
 #import "TTWebController.h"
@@ -41,7 +40,6 @@
 #import "TTView.h"
 #import "TTImageView.h"
 #import "TTImageViewDelegate.h"
-#import "TTYouTubeView.h"
 #import "TTScrollView.h"
 #import "TTScrollViewDelegate.h"
 #import "TTScrollViewDataSource.h"

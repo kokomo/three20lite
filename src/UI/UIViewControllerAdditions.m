@@ -239,16 +239,6 @@ TT_FIX_CATEGORY_BUG(UIViewControllerAdditions)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)addSubcontroller:(UIViewController*)controller animated:(BOOL)animated
-        transition:(UIViewAnimationTransition)transition {
-  if (self.navigationController) {
-    [self.navigationController addSubcontroller:controller animated:animated
-                               transition:transition];
-  }
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)removeFromSupercontroller {
   [self removeFromSupercontrollerAnimated:YES];
 }
@@ -317,16 +307,10 @@ TT_FIX_CATEGORY_BUG(UIViewControllerAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)showBars:(BOOL)show animated:(BOOL)animated {
 
-  #ifdef __IPHONE_3_2
-  if ([[UIApplication sharedApplication]
-        respondsToSelector:@selector(setStatusBarHidden:withAnimation:)])
-    [[UIApplication sharedApplication] setStatusBarHidden:!show
-                                            withAnimation:(animated
-                                                            ? UIStatusBarAnimationFade
-                                                            :UIStatusBarAnimationNone)];
-  else
-  #endif
-  [[UIApplication sharedApplication] setStatusBarHidden:!show animated:animated];
+  [[UIApplication sharedApplication] setStatusBarHidden:!show
+                                          withAnimation:(animated
+                                                          ? UIStatusBarAnimationFade
+                                                          :UIStatusBarAnimationNone)];
 
   [self showNavigationBar:show animated:animated];
 }

@@ -14,7 +14,7 @@
 // limitations under the License.
 //
 
-#import "TTNavigatorViewController.h"
+#import "TTBaseViewController.h"
 
 @class TTTableViewController;
 @class TTSearchDisplayController;
@@ -22,7 +22,7 @@
 /**
  * A view controller with some useful additions.
  */
-@interface TTViewController : TTNavigatorViewController {
+@interface TTViewController : TTBaseViewController {
 @protected
   TTSearchDisplayController* _searchController;
 }
@@ -37,12 +37,5 @@
  */
 @property (nonatomic, retain) TTTableViewController* searchViewController;
 
-/**
- * Forcefully initiates garbage collection. You may call this in your didReceiveMemoryWarning
- * message if you are worried about garbage collection memory consumption.
- *
- * See Articles/UI/GarbageCollection.mdown for a more detailed discussion.
- */
-+ (void)doGarbageCollection;
 
 @end

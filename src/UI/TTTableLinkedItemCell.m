@@ -17,12 +17,8 @@
 #import "TTTableLinkedItemCell.h"
 
 // UI
-#import "TTImageView.h"
-#import "TTNavigator.h"
 #import "TTTableLinkedItem.h"
 
-// UINavigator
-#import "TTURLMap.h"
 
 // Style
 #import "TTGlobalStyle.h"
@@ -66,17 +62,12 @@
 
     TTTableLinkedItem* item = object;
 
-    if (item.URL) {
-      TTNavigationMode navigationMode = [[TTNavigator navigator].URLMap
-                                         navigationModeForURL:item.URL];
-      if (item.accessoryURL) {
-        self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-
-      } else {
+    if (item.accessoryType) {
         NSLocale* locale = TTCurrentLocale();
         if ([locale.localeIdentifier isEqualToString:@"he"]) {
           [_moreView removeFromSuperview];
-        TT_RELEASE_SAFELY(_moreView);
+          TT_RELEASE_SAFELY(_moreView);
+          
           _moreView = [[TTImageView alloc] init];
           UITableView* tableView = (UITableView*)self.superview;
           if (tableView.style == UITableViewStylePlain) {
@@ -87,31 +78,10 @@
           _moreView.urlPath = @"bundle://more.png";
           [self.contentView addSubview:_moreView]; 
         } else {
-          self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+          self.accessoryType = item.accessoryType;
         }
       } 
-
-      self.selectionStyle = TTSTYLEVAR(tableSelectionStyle);
-
-    } else if (nil != item.delegate && nil != item.selector) {
-      NSLocale* locale = TTCurrentLocale();
-      if ([locale.localeIdentifier isEqualToString:@"he"]) {
-        [_moreView removeFromSuperview];
-    TT_RELEASE_SAFELY(_moreView);
-        _moreView = [[TTImageView alloc] init];
-        UITableView* tableView = (UITableView*)self.superview;
-        if (tableView.style == UITableViewStylePlain) {
-          _moreView.frame = CGRectMake(10, 16, 9, 13);
-        } else {
-          _moreView.frame = CGRectMake(10, 16, 9, 13);          
-        }
-        _moreView.urlPath = @"bundle://more.png";
-        [self.contentView addSubview:_moreView];  
-    } else {
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-      }
-      self.selectionStyle = TTSTYLEVAR(tableSelectionStyle);
-
+      
     } else {
       self.accessoryType = UITableViewCellAccessoryNone;
       self.selectionStyle = UITableViewCellSelectionStyleNone;

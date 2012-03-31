@@ -20,12 +20,7 @@
 #import "TTCorePreprocessorMacros.h"
 
 // UI
-#import "TTNavigator.h"
 #import "TTNavigationController.h"
-
-// UINavigator
-#import "TTURLMap.h"
-#import "UIViewController+TTNavigator.h"
 
 // UICommon
 #import "TTGlobalUICommon.h"
@@ -82,23 +77,6 @@ TT_FIX_CATEGORY_BUG(UINavigationControllerAdditions)
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)addSubcontroller:(UIViewController*)controller animated:(BOOL)animated
-        transition:(UIViewAnimationTransition)transition {
-  if (animated && transition) {
-    if ([self isKindOfClass:[TTNavigationController class]]) {
-      [(TTNavigationController*)self pushViewController: controller
-                                 animatedWithTransition: transition];
-
-    } else {
-      [self pushViewController:controller animated:YES];
-    }
-
-  } else {
-    [self pushViewController:controller animated:animated];
-  }
-}
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)bringControllerToFront:(UIViewController*)controller animated:(BOOL)animated {
@@ -132,13 +110,6 @@ TT_FIX_CATEGORY_BUG(UINavigationControllerAdditions)
   }
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)persistNavigationPath:(NSMutableArray*)path {
-  for (UIViewController* controller in self.viewControllers) {
-    [[TTNavigator navigator] persistController:controller path:path];
-  }
-}
 
 
 @end
