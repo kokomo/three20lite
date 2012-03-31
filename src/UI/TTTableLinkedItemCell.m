@@ -18,7 +18,7 @@
 
 // UI
 #import "TTTableLinkedItem.h"
-
+#import "TTImageView.h"
 
 // Style
 #import "TTGlobalStyle.h"
@@ -80,9 +80,7 @@
         } else {
           self.accessoryType = item.accessoryType;
         }
-      } 
-      
-    } else {
+      } else {
       self.accessoryType = UITableViewCellAccessoryNone;
       self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
